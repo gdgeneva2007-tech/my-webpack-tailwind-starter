@@ -22,19 +22,15 @@ module.exports = {
       // 2. Rule for CSS/Tailwind
       {
         test: /\.css$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
-        test:/\.(png|svg|jpg|jpeg|gif)$/i,
-        type:'asset/resource',
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
-    {
+      {
         test: /\.html$/i,
-        loader: "html-loader",
+        loader: 'html-loader',
       },
     ],
   },
