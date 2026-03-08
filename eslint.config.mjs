@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import { defineConfig } from 'eslint/config';
+import jestPlugin from 'eslint-plugin-jest';
 
 export default defineConfig([
   // Don't lint generated output or dependencies
@@ -37,6 +38,25 @@ export default defineConfig([
       globals: {
         ...globals.node,
       },
+    },
+  },
+
+  // Jest test files
+  {
+    files: ['**/*.test.js', '**/*.spec.js', '**/__tests__/**/*.js'],
+    plugins: {
+      jest: jestPlugin,
+    },
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.jest,
+        ...globals.node,
+      },
+    },
+    rules: {
+      ...jestPlugin.configs.recommended.rules,
     },
   },
 
